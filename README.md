@@ -83,7 +83,20 @@ VueComponent
 From Blaze, you can render Vue components with `VueComponent` Blaze template:
 
 ```handlebars
-{{> VueComponent component="my-vue-component" props=props}}
+{{> VueComponent component="my-vue-component" props=props args=args}}
+```
+```javascript
+import store from './vuex/store.js'
+import {router} from './main.js'
+
+Template.vueWrapper.helpers({
+  args() {
+    return {store, router};
+  },
+  props() {
+    return {key: "prop"}
+  }
+});
 ```
 
 This example also binds props to the component. So you can pass data from Blaze to Vue component.
